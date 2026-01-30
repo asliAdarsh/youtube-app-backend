@@ -215,7 +215,7 @@ http://localhost:8000/api/v1
 | POST | `/register` | Register a new user | No |
 | POST | `/login` | Login user | No |
 | POST | `/logout` | Logout user | Yes |
-| POST | `/refresh-token` | Refresh access token | Yes |
+| POST | `/referesh-token` | Refresh access token | Yes |
 | POST | `/change-password` | Change user password | Yes |
 | GET | `/get-user` | Get current user details | Yes |
 | PATCH | `/update-user` | Update user details | Yes |
@@ -239,9 +239,9 @@ http://localhost:8000/api/v1
 
 | Method | Endpoint | Description | Auth Required |
 |--------|----------|-------------|---------------|
-| POST | `/:channelId` | Subscribe to channel | Yes |
-| DELETE | `/:channelId` | Unsubscribe from channel | Yes |
-| GET | `/` | Get user subscriptions | Yes |
+| POST | `/c/:channelId` | Toggle subscription to channel | Yes |
+| GET | `/c/:channelId` | Get channel subscribers | Yes |
+| GET | `/u/:subscriberId` | Get user subscriptions | Yes |
 
 ### Playlist Routes (`/playlist`)
 
@@ -260,8 +260,8 @@ http://localhost:8000/api/v1
 |--------|----------|-------------|---------------|
 | POST | `/:videoId` | Add comment to video | Yes |
 | GET | `/:videoId` | Get video comments | Yes |
-| PATCH | `/:commentId` | Update comment | Yes |
-| DELETE | `/:commentId` | Delete comment | Yes |
+| PATCH | `/c/:commentId` | Update comment | Yes |
+| DELETE | `/c/:commentId` | Delete comment | Yes |
 
 ### Tweet Routes (`/tweet`)
 
@@ -276,17 +276,17 @@ http://localhost:8000/api/v1
 
 | Method | Endpoint | Description | Auth Required |
 |--------|----------|-------------|---------------|
-| POST | `/toggle/video/:videoId` | Toggle like on video | Yes |
-| POST | `/toggle/comment/:commentId` | Toggle like on comment | Yes |
-| POST | `/toggle/tweet/:tweetId` | Toggle like on tweet | Yes |
+| POST | `/toggle/v/:videoId` | Toggle like on video | Yes |
+| POST | `/toggle/c/:commentId` | Toggle like on comment | Yes |
+| POST | `/toggle/t/:tweetId` | Toggle like on tweet | Yes |
 | GET | `/videos` | Get liked videos | Yes |
 
 ### Dashboard Routes (`/dashboard`)
 
 | Method | Endpoint | Description | Auth Required |
 |--------|----------|-------------|---------------|
-| GET | `/stats` | Get channel statistics | Yes |
-| GET | `/videos` | Get channel videos | Yes |
+| GET | `/stats/:channelId` | Get channel statistics | Yes |
+| GET | `/videos/:channelId` | Get channel videos | Yes |
 
 ### Health Check (`/healthcheck`)
 
